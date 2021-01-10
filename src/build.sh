@@ -13,9 +13,6 @@ files=$(rg \
   --files-without-match 'private: 1|draft: 1' \
   -g '!diary/*' -g *zett-*.md -g '!index.md' \
   | sort -t2 -k2 -r \
-  #sort gonna have issue if the title has a '2' character
-  # | sed -E 's/([0-9]{4}-[0-9]{2}-[0-9]{2})/ \1/' \ 
-  # | sed -E 's/ ([0-9]{4}-[0-9]{2}-[0-9]{2})/\1/' \
 )
 
 # Create an empty file for the listing page.
