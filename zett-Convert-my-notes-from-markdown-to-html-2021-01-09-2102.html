@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Convert my notes from markdown to html</title>
+  <script src="https://livejs.com/live.js"></script>
+  <style>
+     :root{
+        --bg:#FFF;
+        --fg:#1A1A1A;
+        --medTone:rgba(26, 26, 26, 0.1);
+        --border-color:var(--fg);
+        --border-width:1px
+    }
+    *{
+        box-sizing:border-box
+    }
+
+    * :target{
+        background:rgba(92,175,255,.5)
+    }
+
+
+    body{
+        background:var(--bg);
+        color:var(--fg);
+        font-family:-apple-system,BlinkMacSystemFont,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif;
+        font-size:1rem;
+        line-height:1.6em;
+        margin:0;
+        padding:0;
+        text-rendering:optimizeLegibility
+    }
+    body>header{
+        border-bottom:var(--border-width) solid var(--border-color)
+    }
+    body>footer,body>header>nav,body>main{
+        margin:0 auto;
+        max-width:65ch;
+        min-width:280px
+    }
+    body>footer,body>main{
+        padding:24px
+    }
+    body>header>nav>ul{
+        margin:0 24px;
+        padding:24px 0
+    }
+    nav>ul{
+        display:flex;
+        flex-direction:row
+    }
+    nav>ul>li{
+        display:inline-flex;
+        margin-right:16px
+    }
+    nav a{
+        text-decoration:none
+    }
+    nav a:hover{
+        text-decoration:underline
+    }
+    nav a.selected{
+        text-decoration:underline
+    }
+    li.tap{
+        padding:3px 0
+    }
+    li.tap a{
+        padding:3px 0
+    }
+    h1{
+        font-size:2em;
+        font-weight:700;
+        line-height:1.6em
+    }
+    h2,h3,h4{
+        font-weight:600;
+        line-height:1.6em;
+        margin:1.4em 0 0
+    }
+    h2{
+        font-size:1.6em
+    }
+    h3{
+        font-size:1.1em
+    }
+    a{
+        color:var(--fg)
+    }
+    .link-decoration{
+        text-decoration:underline
+    }
+    code{
+        font-family:SFMono-Regular,JuliaMono,Hack,Menlo,Monaco,Consolas,"Liberation Mono",Courier,monospace;
+        font-size:.875em
+    }
+    pre{
+        background:var(--medTone);
+        border:var(--border-width) solid var(--border-color);
+        border-radius:2px;
+        font-family:inherit;
+        overflow-x:auto;
+        padding:.65em
+    }
+    sup{
+        margin-left:2px;
+        position:relative;
+        top:-.4em;
+        vertical-align:baseline
+    }
+    hr{
+        border:none;
+        border-top:var(--border-width) solid var(--fg);
+        color:var(--fg);
+        margin:36px 0
+    }
+    details summary span{
+        cursor:pointer;
+        text-decoration:underline
+    }
+    figure{
+        margin:24px 0;
+        overflow-x:scroll
+    }
+    figure pre{
+        margin:0
+    }
+    figcaption{
+        font-size:.875em;
+        font-style:italic;
+        font-weight:300;
+        line-height:1.5em;
+        margin-top:9px
+    }
+    input{
+        color:var(--fg);
+        font-size:1rem
+    }
+    table{
+        border-collapse:collapse;
+        width:100%
+    }
+    table *{
+        text-align:left;
+        vertical-align:top
+    }
+    .grid-2-3{
+        grid-template-columns:repeat(2,1fr)
+    }
+    .zett-card table th{
+        background:var(--medTone)
+    }
+    .zett-card table td,.zett-card table th{
+        border:var(--border-width) solid var(--fg);
+        padding:6px
+    }
+    .focus-visible:not(:focus-visible){
+        outline:0
+    }
+    svg{
+        height:auto;
+        max-width:100%
+    }
+    .image-404{
+        background:var(--medTone);
+        border:var(--border-width) dashed var(--border-color);
+        filter:grayscale(100%);
+        max-height:375px;
+        width:100%
+    }
+    @media (min-width:60rem){
+        body{
+            font-size:15px
+        }
+        body>header{
+            border-bottom:none
+        }
+        nav>ul>li{
+            margin-right:12px
+        }
+        nav a{
+            font-size:1em
+        }
+        li.tap{
+            padding:2px 0
+        }
+        li.tap a{
+            padding:2px 0
+        }
+        input{
+            font-size:.9rem
+        }
+    }
+    @media (min-width:480px){
+        .grid-2-3{
+            grid-template-columns:repeat(3,1fr)
+        }
+    }
+     
+    // utility class
+    .mb8px {
+         margin-bottom: 8px;
+    }
+     .mb16px {
+         margin-bottom: 16px;
+    }
+     .mha {
+         margin-left: auto;
+         margin-right: auto;
+    }
+     .mt3 {
+         margin-top: 32px;
+    }
+
+    .mb3 {
+        margin-bottom: 32px;
+    }
+
+     .pa1 {
+         padding: 8px;
+    }
+     .pa2 {
+         padding: 16px;
+    }
+     .pv3 {
+         padding-top: 32px;
+         padding-bottom: 32px;
+    }
+     .mw-600px {
+         max-width: 600px;
+    }
+     .b1 {
+         border: 1px solid var(--fg);
+    }
+     .bg-gray {
+         background: var(--medTone);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="mha mw-600px mt3 mb3 pa2">
+    <a href="/">Back to notes</a>
+    <h1 class="mb16px">Convert my notes from markdown to html</h1>
+    <div class="mb8px">
+      <strong>Keywords:</strong> vimwiki,site-generator,notes
+    </div>
+    <div class="note-date mb16px">
+      <strong>Date:</strong> 2021-01-09
+    </div>
+    <div class="note-content b1 bg-gray pa2">
+      <p>I write my note in vim using vimwiki. And generating html files from the note markdown files and deploy to github pages to make it accessbbile from the web.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Install some tools: <code>pandoc</code>, <code>ripgrep</code></p>
+<h2 id="setup">Setup</h2>
+<h3 id="create-a-website-folder-to-put-all-the-generated-html-files">Create a website folder to put all the generated html files</h3>
+<h3 id="read-all-the-note-files-in-vimwiki-folder">Read all the note files in vimwiki folder</h3>
+<h3 id="convert-them-to-html-file-with-pandoc">Convert them to html file with <code>pandoc</code></h3>
+<h3 id="move-them-to-the-site-director">Move them to the site director</h3>
+<h3 id="build-the-index.html">Build the index.html</h3>
+<p>Generate a entry point to list all the notes.</p>
+<h3 id="automatically-run-the-build-script-when-files-update">Automatically run the build script when files update</h3>
+<p>Run this command in the build script directory.</p>
+<pre><code>while [[ 1 ]]; do inotifywait -e modify ./src/* ~/vimwiki/*.md; ./src/b.sh; done;</code></pre>
+<h3 id="setup-a-local-server">Setup a local server</h3>
+<pre><code>python3 -m http.server 4000</code></pre>
+<h3 id="include-live.js-for-automatically-refresh-webpage-when-content-changed">Include <code>live.js</code> for automatically refresh webpage when content changed</h3>
+<p>Put this inside the html template file:</p>
+<pre><code>&lt;script src=&quot;https://livejs.com/live.js&quot;&gt;&lt;/script&gt;</code></pre>  
+    </div>
+  </div>
+</body>
+</html>
