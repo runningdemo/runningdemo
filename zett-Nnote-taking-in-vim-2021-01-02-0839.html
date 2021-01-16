@@ -244,14 +244,14 @@
     <a href="/">Back to notes</a>
     <h1 class="mb16px">Note taking in vim</h1>
     <div class="mb8px">
-      <strong>Keywords:</strong> zettelkasten,notes,second brain
+      <strong>Keywords:</strong> zettelkasten,notes,vimwiki
     </div>
     <div class="note-date mb16px">
       <strong>Date:</strong> 2021-01-02
     </div>
     <div class="note-content b1 bg-gray pa2">
       <h2 id="overview">Overview</h2>
-<p>I want my note are easy to create and access. I currently combind different approaches together to make one suit my needs. Most of them point to the <a href="https://zettelkasten.de/posts/overview/#knowledge-management">Zettelkasten</a> method. I will check that in detail in the feature.</p>
+<p>I want my notes are easy to create and access. I currently combind different approaches together to make one suit my needs.</p>
 <p>Some features I want to have</p>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" checked="" />
@@ -261,11 +261,11 @@ create note from terminal with <code>zet 'note name'</code></li>
 <li><input type="checkbox" disabled="" checked="" />
 Add meta data to a note - title - date - tags</li>
 <li><input type="checkbox" disabled="" checked="" />
-Search notes quickly. Using the <code>vim :Rg command</code></li>
+Search notes quickly within vim <code>&lt;leader&gt;fw</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+Generate static pages</li>
 <li><input type="checkbox" disabled="" />
 When typing the meta data tags, con be auto completed</li>
-<li><input type="checkbox" disabled="" />
-Generate static pages</li>
 </ul>
 <h2 id="setup">Setup</h2>
 <h3 id="prerequisties">Prerequisties</h3>
@@ -342,11 +342,24 @@ keywords: note, new, mine
 My note body</code></pre></li>
 </ul>
 <h3 id="search-notes">Search notes</h3>
-<p>With the help of <code>Ripgrep</code> and the custom code 2, I can do full text search with <code>&lt;C-g&gt;</code></p>
+<p>No matter what is your current working directory of vim, <code>:WikiRg</code> will always search content from note files.</p>
+<p><code>&lt;leader&gt;fw :WikiRg</code></p>
+<pre><code> search inside vimwiki
+command! -bang -nargs=* WikiRg 
+      \ call fzf#vim#grep(
+      \ &#39;rg &#39;
+      \ .&#39;--column --line-number --no-heading --color=always --smart-case &#39;
+      \ .shellescape(&lt;q-args&gt;).&#39; &quot;/home/liang/vimwiki&quot;&#39;,
+      \ 0, fzf#vim#with_preview({&#39;options&#39;: &#39;--delimiter : --nth 4..&#39;}), &lt;bang&gt;0)
+      
+nnoremap &lt;buffer&gt; &lt;leader&gt;fw :WikiRg&lt;Cr&gt;</code></pre>
 <h3 id="links">Links:</h3>
 <ul>
 <li><a href="https://jaredgorski.org/notes/zett-my-knowledge-management-system-2020-08-09-1819">My knowledge management system</a></li>
 </ul>  
+    </div>
+    <div class="mt3">
+      <a href="/">Back to notes</a>
     </div>
   </div>
 </body>

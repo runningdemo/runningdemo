@@ -261,7 +261,7 @@ create note from terminal with <code>zet 'note name'</code></li>
 <li><input type="checkbox" disabled="" checked="" />
 Add meta data to a note - title - date - tags</li>
 <li><input type="checkbox" disabled="" checked="" />
-Search notes quickly. Using the <code>vim :Rg command</code></li>
+Search notes quickly within vim <code>&lt;leader&gt;fw</code></li>
 <li><input type="checkbox" disabled="" checked="" />
 Generate static pages</li>
 <li><input type="checkbox" disabled="" />
@@ -342,7 +342,17 @@ keywords: note, new, mine
 My note body</code></pre></li>
 </ul>
 <h3 id="search-notes">Search notes</h3>
-<p>With the help of <code>Ripgrep</code> and the custom code 2, I can do full text search with <code>&lt;C-g&gt;</code></p>
+<p>No matter what is your current working directory of vim, <code>:WikiRg</code> will always search content from note files.</p>
+<p><code>&lt;leader&gt;fw :WikiRg</code></p>
+<pre><code> search inside vimwiki
+command! -bang -nargs=* WikiRg 
+      \ call fzf#vim#grep(
+      \ &#39;rg &#39;
+      \ .&#39;--column --line-number --no-heading --color=always --smart-case &#39;
+      \ .shellescape(&lt;q-args&gt;).&#39; &quot;/home/liang/vimwiki&quot;&#39;,
+      \ 0, fzf#vim#with_preview({&#39;options&#39;: &#39;--delimiter : --nth 4..&#39;}), &lt;bang&gt;0)
+      
+nnoremap &lt;buffer&gt; &lt;leader&gt;fw :WikiRg&lt;Cr&gt;</code></pre>
 <h3 id="links">Links:</h3>
 <ul>
 <li><a href="https://jaredgorski.org/notes/zett-my-knowledge-management-system-2020-08-09-1819">My knowledge management system</a></li>
