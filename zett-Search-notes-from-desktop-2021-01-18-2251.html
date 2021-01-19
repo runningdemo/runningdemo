@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All notes</title>
+  <title>Search notes from desktop</title>
+  <script src="https://livejs.com/live.js"></script>
   <style>
      :root{
         --bg:#FFF;
@@ -236,36 +237,47 @@
          background: var(--medTone);
     }
 
-
-      ul {
-        list-style: none;
-        padding-left: 0;
-      }
-      ul li {
-        display: flex;
-        justify-content: space-between;
-      }
   </style>
-  <script src="https://livejs.com/live.js"></script>
 </head>
 <body>
-  <div class="mw-600px mha mt3 pa2">
-    <p>This page contains the notes from <a href="https://twitter.com/runningdemo">Demo</a>,
-    focus on the day to day life as a Frontend developer and a computer fan.</p>
-    <ul>
-<li><a href="zett-xargs-deal-with-parameters-2021-01-19-1143.html">xargs deal with parameters</a> <time>2021-01-19</time></li>
-<li><a href="zett-Run-a-command-with-xargs-2021-01-19-1143.html">Run a command with xargs</a> <time>2021-01-19</time></li>
-<li><a href="zett-Trap-key-press-in-a-bash-script-2021-01-19-1137.html">Trap key press in a bash script</a> <time>2021-01-19</time></li>
-<li><a href="zett-Search-notes-from-desktop-2021-01-18-2251.html">Search notes from desktop</a> <time>2021-01-18</time></li>
-<li><a href="zett-random-ideas-2021-01-16-2258.html">random ideas</a> <time>2021-01-16</time></li>
-<li><a href="zett-The-issue-of-sourcing-a-bash-script-2021-01-16-1600.html">The issue of sourcing a bash script</a> <time>2021-01-16</time></li>
-<li><a href="zett-Handle-ctrl-c-inside-a-shell-script-with-trap-2021-01-16-1420.html">Handle ctrl c inside a shell script with trap</a> <time>2021-01-16</time></li>
-<li><a href="zett-String-manipulation-in-shell-script-2021-01-10-0702.html">String manipulation in shell script</a> <time>2021-01-10</time></li>
-<li><a href="zett-On-beining-Frontend-developer-2021-01-09-1116.html">On beining Frontend developer</a> <time>2021-01-09</time></li>
-<li><a href="zett-Less-is-more-2021-01-03-1832.html">Less is more</a> <time>2021-01-03</time></li>
-<li><a href="zett-Tmux-status-bar-2021-01-03-1632.html">Tmux status bar</a> <time>2021-01-03</time></li>
-<li><a href="zett-Note-taking-in-vim-2021-01-02-0839.html">Note taking in vim</a> <time>2021-01-02</time></li>
-</ul>  
+  <div class="mha mw-600px mt3 mb3 pa2">
+    <a href="/">Back to notes</a>
+    <h1 class="mb16px">Search notes from desktop</h1>
+    <div class="mb8px">
+      <strong>Keywords:</strong> bash,notes,ripgrep,fzf
+    </div>
+    <div class="note-date mb16px">
+      <strong>Date:</strong> 2021-01-18
+    </div>
+    <div class="note-content b1 bg-gray pa2">
+      <p>I have all my notes in the ~/vimwiki folder and I can create and search quickly from terminal and vim. See the details here: <a href="./zett-Note-taking-in-vim-2021-01-02-0839.md">note taking in vim</a>. But sometimes I want to search quickly from the desktop. Here is how I do it.</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+launch with keyboard shortcut <code>super + shift +n</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+open selected note in vim</li>
+<li><input type="checkbox" disabled="" checked="" />
+search notes by file name</li>
+<li><input type="checkbox" disabled="" />
+search notes by file content</li>
+<li><input type="checkbox" disabled="" />
+create new note if there is no result</li>
+</ul>
+<h2 id="search-notes">Search notes</h2>
+<p>I use the <code>ripgrep</code> to search files inside my note folder and them pipe then to <code>fzf</code> for quickly preview. After targing the file, open it with the vim.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/vimwiki&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">file=$(</span><span class="ex">rg</span> <span class="at">--files</span> <span class="at">--smart-case</span> <span class="kw">|</span> <span class="ex">fzf</span> <span class="at">--preview</span> <span class="st">&quot;bat {}&quot;</span> <span class="at">--preview-window</span><span class="op">=</span>right:70%<span class="va">)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> <span class="kw">]]</span> <span class="kw">||</span> <span class="bu">exit</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">nvim</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span></span></code></pre></div>
+<h2 id="open-a-terminal-and-run-the-script">Open a terminal and run the script</h2>
+<p>Put the shortcut to <code>~/.xbindkeysrc</code> configuration file and reload the xbindkeys. Now I can launch a teminal window and start to search all my notes with shortcut <code>super + shift + n</code> and hit <code>enter</code> to open the selected note.</p>
+<pre><code>&quot;kitty -T scratchpad search-note-page.sh&quot;
+mod4 + Super_L + shift + n</code></pre>  
+    </div>
+    <div class="mt3">
+      <a href="/">Back to notes</a>
+    </div>
   </div>
 </body>
 </html>

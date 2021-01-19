@@ -3,7 +3,7 @@
 # trap ctrl-c and call ctrl_c()
 trap shutdown_server EXIT
 
-(python -m http.server 4000)&
+(python -m http.server 3000)&
 server_pid=$!
 
 function shutdown_server() {
