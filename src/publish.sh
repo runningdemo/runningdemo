@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sh -c './build.sh'
+sh ./build.sh
 
 git add .
 git commit -m "publish"
