@@ -258,21 +258,56 @@ launch with keyboard shortcut <code>super + shift +n</code></li>
 open selected note in vim</li>
 <li><input type="checkbox" disabled="" checked="" />
 search notes by file name</li>
-<li><input type="checkbox" disabled="" />
+<li><input type="checkbox" disabled="" checked="" />
 search notes by file content</li>
 <li><input type="checkbox" disabled="" />
 create new note if there is no result</li>
 </ul>
 <h2 id="search-notes">Search notes</h2>
 <p>I use the <code>ripgrep</code> to search files inside my note folder and them pipe then to <code>fzf</code> for quickly preview. After targing the file, open it with the vim.</p>
+<h3 id="search-by-filenames">Search by filenames</h3>
+<p>Create a script and name it <code>search-note-files.sh</code> and make it executable.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/vimwiki&quot;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">file=$(</span><span class="ex">rg</span> <span class="at">--files</span> <span class="at">--smart-case</span> <span class="kw">|</span> <span class="ex">fzf</span> <span class="at">--preview</span> <span class="st">&quot;bat {}&quot;</span> <span class="at">--preview-window</span><span class="op">=</span>right:70%<span class="va">)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> <span class="kw">]]</span> <span class="kw">||</span> <span class="bu">exit</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">nvim</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span></span></code></pre></div>
+<h3 id="search-by-content-of-files">Search by content of files</h3>
+<p>If you want to search by file content, extra scripting needs to be done. Create a script and name it <code>search-inside-note-files.sh</code> and make it executable.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/vimwiki&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">file=$(</span><span class="ex">rg</span> <span class="at">--column</span> <span class="at">--line-number</span> <span class="at">--smart-case</span> . <span class="kw">|</span> <span class="ex">fzf</span> <span class="at">--delimiter</span><span class="op">=</span>: <span class="at">--preview</span> <span class="st">&quot;fzf-bat-preview {1} {2}&quot;</span> <span class="at">--preview-window</span><span class="op">=</span>right:70%<span class="va">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># file=$(rg --files | fzf --preview &quot;bat --color always {1}&quot; --preview-window=right:70%)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Search file contents</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">[[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> <span class="kw">]]</span> <span class="kw">||</span> <span class="bu">exit</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$file</span> <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-d</span> <span class="st">&#39;:&#39;</span> sh <span class="at">-c</span> <span class="st">&#39;nvim &quot;+normal $1G&quot; &quot;$0&quot;&#39;</span></span></code></pre></div>
+<p>We also need to create a custom script to preview the search result, we name it as <code>fzf-bat-preview</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filename: fzf-bat-preview</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using bat to preview a fzf result and located to certain line</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/sharkdp/bat/issues/388</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-eEuCo</span> pipefail</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-r</span> <span class="va">file=$1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-i</span> <span class="at">-r</span> <span class="va">line=$2</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-i</span> <span class="at">-r</span> <span class="va">lines=$LINES</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># subtract 3 for the header</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-i</span> <span class="va">center=$((</span> (<span class="va">lines</span> <span class="op">-</span> <span class="dv">3</span>) <span class="op">/</span> <span class="dv">2</span> <span class="va">))</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$line</span> <span class="ot">-lt</span> <span class="va">$center</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">center=$line</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-i</span> <span class="at">-r</span> <span class="va">start=$((</span> <span class="va">line</span> <span class="op">-</span> <span class="va">center</span> <span class="va">))</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-i</span> <span class="at">-r</span> <span class="va">end=$((</span> <span class="va">lines</span> <span class="op">+</span> <span class="va">start</span> <span class="va">))</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span> bat <span class="at">--color</span> always <span class="at">--highlight-line</span> <span class="va">$line</span> <span class="at">--line-range</span> <span class="va">$start</span>:<span class="va">$end</span> <span class="at">--paging</span> never <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span></span></code></pre></div>
 <h2 id="open-a-terminal-and-run-the-script">Open a terminal and run the script</h2>
 <p>Put the shortcut to <code>~/.xbindkeysrc</code> configuration file and reload the xbindkeys. Now I can launch a teminal window and start to search all my notes with shortcut <code>super + shift + n</code> and hit <code>enter</code> to open the selected note.</p>
-<pre><code>&quot;kitty -T scratchpad search-note-page.sh&quot;
+<pre><code>&quot;kitty -T scratchpad search-note-files.sh&quot;
 mod4 + Super_L + shift + n</code></pre>  
     </div>
     <div class="mt3">
