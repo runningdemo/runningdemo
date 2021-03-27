@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>All notes</title>
+  <title>Bash array</title>
+  <script src="https://livejs.com/live.js"></script>
   <style>
      :root{
         --bg:#FFF;
@@ -236,38 +237,50 @@
          background: var(--medTone);
     }
 
-
-      ul {
-        list-style: none;
-        padding-left: 0;
-      }
-      ul li {
-        display: flex;
-        justify-content: space-between;
-      }
   </style>
-  <script src="https://livejs.com/live.js"></script>
 </head>
 <body>
-  <div class="mw-600px mha mt3 pa2">
-    <p>This page contains the notes from <a href="https://twitter.com/runningdemo">Demo</a>,
-    focus on the day to day life as a Frontend developer and a computer fan.</p>
-    <ul>
-<li><a href="bash-array-2021-02-19-1234.html">bash array</a> <time>2021-02-19</time></li>
-<li><a href="Minimal-vim-.exrc-to-work-with-my-notes-2021-01-23-1101.html">Minimal vim .exrc to work with my notes</a> <time>2021-01-23</time></li>
-<li><a href="map-ctrl-enter-in-vim-2021-01-20-0828.html">map ctrl enter in vim</a> <time>2021-01-20</time></li>
-<li><a href="How-to-get-rich-(without-getting-lucky)-by-Naval-2021-01-19-2020.html">How to get rich (without getting lucky) by Naval</a> <time>2021-01-19</time></li>
-<li><a href="xargs-deal-with-parameters-2021-01-19-1143.html">xargs deal with parameters</a> <time>2021-01-19</time></li>
-<li><a href="Run-a-command-with-xargs-2021-01-19-1143.html">Run a command with xargs</a> <time>2021-01-19</time></li>
-<li><a href="Search-notes-from-desktop-2021-01-18-2251.html">Search notes from desktop</a> <time>2021-01-18</time></li>
-<li><a href="The-issue-of-sourcing-a-bash-script-2021-01-16-1600.html">The issue of sourcing a bash script</a> <time>2021-01-16</time></li>
-<li><a href="Handle-ctrl-c-inside-a-shell-script-with-trap-2021-01-16-1420.html">Handle ctrl c inside a shell script with trap</a> <time>2021-01-16</time></li>
-<li><a href="String-manipulation-in-shell-script-2021-01-10-0702.html">String manipulation in shell script</a> <time>2021-01-10</time></li>
-<li><a href="On-beining-Frontend-developer-2021-01-09-1116.html">On beining Frontend developer</a> <time>2021-01-09</time></li>
-<li><a href="Less-is-more-2021-01-03-1832.html">Less is more</a> <time>2021-01-03</time></li>
-<li><a href="Tmux-status-bar-2021-01-03-1632.html">Tmux status bar</a> <time>2021-01-03</time></li>
-<li><a href="Note-taking-in-vim-2021-01-02-0839.html">Note taking in vim</a> <time>2021-01-02</time></li>
+  <div class="mha mw-600px mt3 mb3 pa2">
+    <a href="/">Back to notes</a>
+    <h1 class="mb16px">Bash array</h1>
+    <div class="mb8px">
+      <strong>Keywords:</strong> bash, array
+    </div>
+    <div class="note-date mb16px">
+      <strong>Date:</strong> 2021-02-19
+    </div>
+    <div class="note-content b1 bg-gray pa2">
+      <div class="line-block"><strong>Syntax</strong> | <strong>Result</strong> |<br />
+arr=() | Create an empty array |<br />
+arr=(1 2 3) | Initialize array |<br />
+${arr[2]} | Retrieve third element |<br />
+${arr[@]} | Retrieve all elements |<br />
+${!arr[@]} | Retrieve array indices |<br />
+${#arr[@]} | Calculate array size |<br />
+arr[0]=3 | Overwrite 1st element |<br />
+arr+=(4) | Append value(s) |<br />
+arr=( $(ls) ) | Save ls output as an array of files |<br />
+${arr[@]:s:n} | Retrieve n elements starting at index s |</div>
+<h2 id="create-an-array">create an array</h2>
+<pre><code>myArray=(1 2 3 4 5 6)</code></pre>
+<h2 id="looping-through-array-elements">looping through array elements</h2>
+<pre><code>for item in ${myArray[@]}; do
+  echo $item
+done</code></pre>
+<h2 id="looping-through-array-indices">looping through array indices</h2>
+<pre><code>for i in ${!myArray[@]}; do
+  echo $i
+done</code></pre>
+<h2 id="populating-arrays">populating arrays</h2>
+<pre><code>myArray+=( 7 8 9 )</code></pre>
+<h3 id="reference">Reference</h3>
+<ul>
+<li>https://opensource.com/article/18/5/you-dont-know-bash-intro-bash-arrays</li>
 </ul>  
+    </div>
+    <div class="mt3">
+      <a href="/">Back to notes</a>
+    </div>
   </div>
 </body>
 </html>
