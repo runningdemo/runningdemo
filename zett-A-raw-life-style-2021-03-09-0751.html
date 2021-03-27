@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>A raw life style</title>
   <script src="https://livejs.com/live.js"></script>
   <style>
      :root{
@@ -242,51 +242,17 @@
 <body>
   <div class="mha mw-600px mt3 mb3 pa2">
     <a href="/">Back to notes</a>
-    <h1 class="mb16px"></h1>
+    <h1 class="mb16px">A raw life style</h1>
     <div class="mb8px">
-      <strong>Keywords:</strong> 
+      <strong>Keywords:</strong> lifestyle
     </div>
     <div class="note-date mb16px">
-      <strong>Date:</strong> 
+      <strong>Date:</strong> 2021-03-09
     </div>
     <div class="note-content b1 bg-gray pa2">
-      <table>
-<tbody>
-<tr class="odd">
-<td>title: String manipulation in shell script</td>
-</tr>
-<tr class="even">
-<td>date: 2021-01-10</td>
-</tr>
-<tr class="odd">
-<td>keywords:bash</td>
-</tr>
-<tr class="even">
-<td>publish: 1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="extract-substring-with-sed">Extract substring with <code>sed</code></h2>
-<pre><code>input: &#39;zett-String-manipulation-2021-01-10.md&#39;
-output: &#39;String manipulation&#39;
-
-command: echo zett-String-manipulation-2021-01-10.md | sed -E &#39;s/[-|0-9]*\.md//&#39; | sed &#39;s/^zett-//&#39; | sed &#39;s/-/ /g&#39;</code></pre>
-<ol type="1">
-<li><code>sed -E 's/[-|0-9]*\.md'</code>, use regular expression extended mode to get rid of the ‘-2021-01-10.md’ part</li>
-<li><code>sed 's/^zett-'//</code>, remove the ‘zett-’ in the beginning</li>
-<li><code>sed 's/-/ /g'</code>, replace all ‘-’ with ’ ’, with a global flag</li>
-</ol>
-<p>Note, I was originally want to do 1 and 2 with one <code>sed</code> like this:</p>
-<pre><code>sed -E &#39;s/^zett-(.*)[-|0-9]*\.md/\1/&#39;</code></pre>
-<p>But then I will always get ‘String-manipulation-2021-01-10.md’, that’s because the <code>(.*)</code> is a greddy match, and in sed regular expression, according to document, there is no none-greddy match.</p>
-<p>Links: - <a href="https://www.gnu.org/software/sed/manual/sed.html">Sed, a stream editor</a></p>
-<h2 id="extract-substring-with-cut-awk">Extract substring with <code>cut</code>, <code>awk</code></h2>
-<p><strong>Example</strong></p>
-<pre><code>$ s=&#39;one_two_three_four_five&#39;
-$ A=&quot;$(echo $s | cut -d&#39;_&#39; -f2)&quot;
-$ echo $A
-two</code></pre>
-<h2 id="string-substitution">String substitution</h2>  
+      <p>“Raw lifestyle”, I don’t have a quite clear definition of this word now. But it’s something related to some concepts that are ‘low cost’, ‘DIY’, ‘leverage existing things other than buying new’, ‘energy efficient’, ‘less dependency’, ‘hands on’.</p>
+<p>I am still figuring out, and already had some progress on the digital world after switching to Linux. For example, I was subscribed to roamresearch.com to manage my notes. But now I am using a custom bash script to manage notes and it’s highly tailored for my use cases. To achieve this I have to learn some shell script, which actually feels better than watching videos or reading articles about how to use ‘roamresearch.com’. By doing so I removed a $15 monthly subscription fee,cut the dependency on an online service and what’s the best is that I learned new knowledge that I can benefit later. I created a lot of command line scripts after the note scripts.</p>
+<p>That’s just one example and I want to apply it more to real life. Like now, every morning I went out to buy food, and I think I can try to make food few times a week so I can learn to cook and cut cost and probably saving the time.</p>  
     </div>
     <div class="mt3">
       <a href="/">Back to notes</a>

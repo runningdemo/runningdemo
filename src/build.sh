@@ -1,15 +1,12 @@
 #!/bin/bash
 
-
 # cleanup: remove all .html files
 NOTE_PATH='/home/liang/vimwiki/'
 SITE_PATH='/home/liang/projects/runningdemo.com/'
-cd $SITE_PATH
-# find $NOTE_PATH -name zett-\*.md -type f -exec pandoc -o {}.html {} \;
+
 cd $NOTE_PATH
-files=$(rg \
-  --files-without-match 'private: 1|draft: 1' \
-  -g '!diary/*' -g *zett-*.md -g !index.md -g !note_listing_temp.md \
+files=$(rg -l "publish: 1" \
+  -g '!diary/*' -g *.md -g !index.md -g !note_listing_temp.md \
   | sort -t2 -k2 -r \
 )
 
@@ -20,7 +17,7 @@ for md_file in $files
 do
   echo "$md_file"
   titleRegx='s/[-|0-9]*\.md$//';
-  title=$(echo $md_file | sed -E $titleRegx | sed 's/^zett-//' | sed 's/-/ /g')
+  title=$(echo $md_file | sed -E $titleRegx | sed 's/-/ /g')
   link=$(echo $md_file | sed 's/.md$/.html/');
   date=$(echo $md_file | grep -Eo '[0-9]{4}-[0-9]{2}-[0-9]{2}')
   echo - [$title]\($link\) \<time\>$date\<\/time\> >> note_listing_temp.md

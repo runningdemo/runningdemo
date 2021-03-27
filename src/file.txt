@@ -1,0 +1,160 @@
+   [ ] [ ] Skip to content
+
+   ¯
+   Why, Scott, WHY?!? How to Get Better At Anything
+   ____________________ (BUTTON) &#xE5CD;
+   Type to start searching
+
+   ¯ Why, Scott, WHY?!?
+     * Home
+     * Projects
+     * [ ] Vim Vim
+          + Getting Rusty with Vim
+          + Vim Send Text
+          + Vim Toggle Movement: I Just Want to Go Home
+          + Yank Without Jank
+          + Sensible Horizontal Scroll in Vim
+          + Vim Side Search: Making Search Fun Again
+          + Making a Window Submode in Vim
+          + BS to the Black Hole
+          + PSA: Vim Modulo '%' Returns Negative Numbers!
+     * [ ] SQL SQL
+          + SQL + Jinja = Templating Done Right(TM)
+          + What the SQL?! Lateral Joins
+          + What the SQL?! WINDOW
+          + What the SQL?! Recursive
+          + What the SQL?! JOIN me at UNION Station
+     * [ ] 2020 2020
+          + SQL + Jinja = Templating Done Right(TM)
+     * [ ] 2018 2018
+          + Move to MkDocs
+          + A Rustic Journey Through Stream Stats
+          + Getting Rusty with Vim
+          + Dev Blog Tools :: A Quick Tour of My Setup
+          + What the SQL?! JOIN me at UNION Station
+     * [X] 2017 2017
+          + Base16 Shell
+          + [ ] How to Get Better At Anything How to Get Better At
+            Anything Table of contents
+               o RTFM
+               o Make it Fun
+               o Practice
+               o Better not good
+               o Learn, don't Memorize
+               o Learn with others
+               o Cheat
+               o How I got better at Vim
+               o What do you want to get better at next?!?
+               o Comments
+          + FZF + WordNet = Dictionary
+          + GNU Screen
+          + What the SQL?!? Lateral Joins
+          + What the SQL?!? WINDOW
+          + What the SQL?!? Recursive
+          + Vim Send Text
+     * [ ] 2016 2016
+          + PSA: Vim Modulo '%' Returns Negative Numbers!
+          + Photography Refactored
+          + Ruby Abuse: How Not to Write Ruby, But Still Have Fun
+          + Making a Window Submode in Vim
+          + ANSI Codes with Character
+          + Vim Toggle Movement: I Just Want to Go Home
+          + Yank Without Jank
+          + Sensible Horizontal Scroll in Vim
+          + Vim Side Search: Making Search Fun Again
+          + BS to the Black Hole
+     * [ ] 2014 2014
+          + Tech Stack 2014 Edition
+          + Octopress to the Rescue
+
+   Table of contents
+     * RTFM
+     * Make it Fun
+     * Practice
+     * Better not good
+     * Learn, don't Memorize
+     * Learn with others
+     * Cheat
+     * How I got better at Vim
+     * What do you want to get better at next?!?
+     * Comments
+
+How to Get Better At Anything¶
+
+   Better Title
+
+RTFM¶
+
+   RTFM WTFM
+     * WTFM, Write The Flip'n Manual
+     * Do a lightning talk about it :)
+
+Make it Fun¶
+
+   Surprised Koala Trophy
+     * Gamification
+     * Trophy anyone?
+     * If it can't be made fun, make it fun.
+
+Practice¶
+
+   I've practiced a lot
+     * Slowly with intent
+     * Pressure cycles: none, some, actual, intolerable.
+     * The practice of practice deserves its own talk.
+
+Better not good¶
+
+   Good to Better Chart
+     * Good is the killer of better.
+     * People tend to stop because good is unreachable.
+     * People tend to stop after they're good enough.
+     * If we aim to get better, we'll eventually be better than good.
+     * Progressive goals. OMG! I forgot goal setting!
+
+Learn, don't Memorize¶
+
+   One does not simply memorize PI
+     * Learning is understanding
+     * Understanding is connecting the new thing to an old thing.
+     * Computers memorize. You're not a computer.
+
+Learn with others¶
+
+   Google Hug
+     * With the Internet you're never alone and always alone.
+     * Actually talk with people!
+
+Cheat¶
+
+   One does not simply memorize PI
+     * If you're not cheating, you're not trying.
+     * Reverse engineer the cheat, don't actually cheat!
+
+How I got better at Vim¶
+
+     * RTFM - :help
+     * WTFM - Blogging, figure out other people's problems :/
+     * Practice - Wrote stuff that wasn't needed immediately, my own
+       notes.
+     * Don't Memorize - Vim has grammar like English. Oooh...
+       Reconnection!
+     * Learn with Others - We have vim users, teach them (but don't let
+       them know you're only one step ahead)
+     * Cheat - Look at other's Vimscript to figure out that cool thing
+       they did.
+
+What do you want to get better at next?!?¶
+
+     * lightning talks?
+     * Shuffling cards? (@devin)
+     * SQL?
+     * Drawing?
+     * Piano?
+
+Comments
+
+   Previous Base16 Shell
+   Next FZF + WordNet = Dictionary
+   Copyright © 2014 - 2018 Scott Pierce
+   powered by MkDocs and Material for MkDocs

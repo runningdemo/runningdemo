@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>The essence of calculus overview</title>
   <script src="https://livejs.com/live.js"></script>
   <style>
      :root{
@@ -242,51 +242,89 @@
 <body>
   <div class="mha mw-600px mt3 mb3 pa2">
     <a href="/">Back to notes</a>
-    <h1 class="mb16px"></h1>
+    <h1 class="mb16px">The essence of calculus overview</h1>
     <div class="mb8px">
-      <strong>Keywords:</strong> 
+      <strong>Keywords:</strong> course,math,calculus,3blue1brown
     </div>
     <div class="note-date mb16px">
-      <strong>Date:</strong> 
+      <strong>Date:</strong> 2021-03-13
     </div>
     <div class="note-content b1 bg-gray pa2">
-      <table>
-<tbody>
-<tr class="odd">
-<td>title: String manipulation in shell script</td>
-</tr>
-<tr class="even">
-<td>date: 2021-01-10</td>
-</tr>
-<tr class="odd">
-<td>keywords:bash</td>
-</tr>
-<tr class="even">
-<td>publish: 1</td>
-</tr>
-</tbody>
-</table>
-<h2 id="extract-substring-with-sed">Extract substring with <code>sed</code></h2>
-<pre><code>input: &#39;zett-String-manipulation-2021-01-10.md&#39;
-output: &#39;String manipulation&#39;
-
-command: echo zett-String-manipulation-2021-01-10.md | sed -E &#39;s/[-|0-9]*\.md//&#39; | sed &#39;s/^zett-//&#39; | sed &#39;s/-/ /g&#39;</code></pre>
-<ol type="1">
-<li><code>sed -E 's/[-|0-9]*\.md'</code>, use regular expression extended mode to get rid of the ‘-2021-01-10.md’ part</li>
-<li><code>sed 's/^zett-'//</code>, remove the ‘zett-’ in the beginning</li>
-<li><code>sed 's/-/ /g'</code>, replace all ‘-’ with ’ ’, with a global flag</li>
-</ol>
-<p>Note, I was originally want to do 1 and 2 with one <code>sed</code> like this:</p>
-<pre><code>sed -E &#39;s/^zett-(.*)[-|0-9]*\.md/\1/&#39;</code></pre>
-<p>But then I will always get ‘String-manipulation-2021-01-10.md’, that’s because the <code>(.*)</code> is a greddy match, and in sed regular expression, according to document, there is no none-greddy match.</p>
-<p>Links: - <a href="https://www.gnu.org/software/sed/manual/sed.html">Sed, a stream editor</a></p>
-<h2 id="extract-substring-with-cut-awk">Extract substring with <code>cut</code>, <code>awk</code></h2>
-<p><strong>Example</strong></p>
-<pre><code>$ s=&#39;one_two_three_four_five&#39;
-$ A=&quot;$(echo $s | cut -d&#39;_&#39; -f2)&quot;
-$ echo $A
-two</code></pre>
-<h2 id="string-substitution">String substitution</h2>  
+      <h2 id="part-1">Part 1:</h2>
+<h2 id="part-2-the-paradox-of-the-derivative">Part 2: The paradox of the derivative</h2>
+<p>https://www.youtube.com/watch?v=9vKqVkMQHKk&amp;list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&amp;index=2https://www.youtube.com/watch?v=9vKqVkMQHKk&amp;list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&amp;index=2https://www.youtube.com/watch?v=9vKqVkMQHKk&amp;list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&amp;index=2</p>
+<p>Goals: 1. Learn derivatives 2. avoid paradoxes</p>
+<h2 id="part-3-derivative-formulas-through-geometry">Part 3: Derivative formulas through geometry</h2>
+<ul>
+<li>tiny nudge</li>
+<li>miniscule</li>
+<li>Derivative of x^3, the rate at which x^3 changes per unit change of x is 3x^2.</li>
+<li>polynomial</li>
+<li>pause and ponder</li>
+<li>hypotenuse</li>
+</ul>
+<h3 id="solve-the-derivative-of-1x">Solve the derivative of 1/x</h3>
+<p>https://www.reddit.com/r/3Blue1Brown/comments/cb9ou4/geometric_derivation_for_derivative_of_1x_help/</p>
+<h3 id="solve-the-derivate-of-square-root-of-derivative">Solve the derivate of square root of derivative</h3>
+<h2 id="part-4-visualizing-the-chain-rule-and-product-rule">Part 4: Visualizing the chain rule and product rule</h2>
+<p>2021-03-20</p>
+<ul>
+<li>Three basic way to combine functions together:
+<ul>
+<li>add</li>
+<li>multiple</li>
+<li>composing (shove one function into another one)</li>
+</ul></li>
+<li>3 rules:
+<ul>
+<li>sum rule: df =</li>
+<li>product rule: Left<em>d(Right) + Right</em>d(Left)</li>
+<li>chain rule: d(Outer) * d(Inner)</li>
+</ul></li>
+</ul>
+<h2 id="part-5-what-is-so-special-about-eulers-number-e">Part 5: What is so special about Euler’s number e</h2>
+<p>2021-03-20</p>
+<ul>
+<li>e = 2.71828..</li>
+<li>derivative of e^x is itself</li>
+</ul>
+<h3 id="notes-about-part-5.">Notes about part 5.</h3>
+<p>When I learn this calculus, I always wondering what’s the real world use case of the calculus. And I did some search, unfortunately I can not actually understand the result yet, hope I have some clue later on.</p>
+<p><a href="https://cs.stackexchange.com/questions/55462/how-when-is-calculus-used-in-computer-science">How/when is calculus used in Computer Science?</a></p>
+<h2 id="part-6-implicit-differentiation">Part 6: Implicit differentiation</h2>
+<ul>
+<li>“pythagorean theorem” : The sum of the squares of the two legs on this triangle is equal to the square of the hypotenuse.</li>
+<li>“tangent line”</li>
+<li>“perpendicular to”</li>
+<li>“<strong>interdependent</strong>”:
+<ul>
+<li>e.g.: They are interdependent value related to some equation.</li>
+</ul></li>
+<li><h2 id="implicit-curve">“<strong>implicit curve</strong>”:</h2></li>
+<li>“<strong>implicit differentiation</strong>”</li>
+<li>“<strong>realated rate problem</strong>”</li>
+<li>“<strong>inverse function</strong>”
+<ul>
+<li><a href="https://www.mathsisfun.com/sets/function-inverse.html">Math is fun: inverse function</a></li>
+</ul></li>
+</ul>
+<h2 id="part-7-limits-lhôpitals-rule-and-epsilon-delta-definitions">Part 7: Limits, L’Hôpital’s rule, and epsilon delta definitions</h2>
+<ul>
+<li><p>Goal 1: Formal definition of a derivative</p></li>
+<li><p>Goal 2: definition of limits</p></li>
+<li><p>“<strong>infinitesimal</strong>”</p>
+<ul>
+<li>ˌinfinəˈtes(ə)m(ə)l</li>
+</ul></li>
+<li><p>formal derivative definition</p></li>
+</ul>
+<h2 id="part-8-integration-and-the-fundamental-theorem-of-calculus">Part 8: Integration and the fundamental theorem of calculus</h2>
+<ul>
+<li>derivative and anti-derivative</li>
+<li>how to cancel out the constant in the anti-derivative</li>
+</ul>
+<h2 id="part-11-taylor-series">Part 11: Taylor series</h2>
+<p>Q: At 06:42, ‘anything quadratic or smaller goes to 0’. Why?</p>  
     </div>
     <div class="mt3">
       <a href="/">Back to notes</a>
