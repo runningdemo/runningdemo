@@ -37,3 +37,4 @@ find $NOTE_PATH -name '*.html' -exec mv -f {} $SITE_PATH \;
 
 # // clean up
 rm note_listing_temp.md
+echo 'done build'
