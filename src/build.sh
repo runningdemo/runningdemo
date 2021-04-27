@@ -26,10 +26,14 @@ done
 
 pandoc note_listing_temp.md --metadata title="index" -f markdown -t html --template $SITE_PATH/src/_index.html -H $SITE_PATH/src/index.css -o index.md.html
 
+# // copy the assets folder
+yes | cp -rf assets $SITE_PATH
+
 # // rename .md.html to .html
 find $NOTE_PATH -name '*.md.html' -execdir bash -c 'mv -i "$1" "${1//md.html/html}"' bash {} \;
 
 # // move the .html files from vimwiki folder to this folder
 find $NOTE_PATH -name '*.html' -exec mv -f {} $SITE_PATH \;
+
 # // clean up
 rm note_listing_temp.md

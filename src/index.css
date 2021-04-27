@@ -230,3 +230,10 @@ svg{
      background: var(--medTone);
 }
 
+figure {
+  overflow: auto;
+}
+
+img {
+  width: 100%;
+}
