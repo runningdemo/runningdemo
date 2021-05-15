@@ -266,34 +266,26 @@
 <td>date: 2021-01-10</td>
 </tr>
 <tr class="odd">
-<td>keywords:bash</td>
+<td>keywords:bash,string,sed</td>
 </tr>
 <tr class="even">
 <td>publish: 1</td>
 </tr>
 </tbody>
 </table>
-<h2 id="extract-substring-with-sed">Extract substring with <code>sed</code></h2>
-<pre><code>input: &#39;zett-String-manipulation-2021-01-10.md&#39;
-output: &#39;String manipulation&#39;
-
-command: echo zett-String-manipulation-2021-01-10.md | sed -E &#39;s/[-|0-9]*\.md//&#39; | sed &#39;s/^zett-//&#39; | sed &#39;s/-/ /g&#39;</code></pre>
-<ol type="1">
-<li><code>sed -E 's/[-|0-9]*\.md'</code>, use regular expression extended mode to get rid of the ‘-2021-01-10.md’ part</li>
-<li><code>sed 's/^zett-'//</code>, remove the ‘zett-’ in the beginning</li>
-<li><code>sed 's/-/ /g'</code>, replace all ‘-’ with ’ ’, with a global flag</li>
-</ol>
-<p>Note, I was originally want to do 1 and 2 with one <code>sed</code> like this:</p>
-<pre><code>sed -E &#39;s/^zett-(.*)[-|0-9]*\.md/\1/&#39;</code></pre>
-<p>But then I will always get ‘String-manipulation-2021-01-10.md’, that’s because the <code>(.*)</code> is a greddy match, and in sed regular expression, according to document, there is no none-greddy match.</p>
+<h2 id="extract-substring-with-regular-expression">Extract substring with regular expression</h2>
+<p>Replace all ‘a’ with ‘b’</p>
+<pre><code>$ echo &quot;bpple bpple&quot; | sed &#39;s/b/a/g&#39;
+# output: apple apple</code></pre>
+<p>Replace none-number from a string</p>
+<pre><code>$ echo a1b2c3 | sed &#39;s/[^0-9]*//g&#39;` 
+# output: 123</code></pre>
 <p>Links: - <a href="https://www.gnu.org/software/sed/manual/sed.html">Sed, a stream editor</a></p>
-<h2 id="extract-substring-with-cut-awk">Extract substring with <code>cut</code>, <code>awk</code></h2>
-<p><strong>Example</strong></p>
+<h2 id="extract-substring-by-delimiter">Extract substring by delimiter</h2>
 <pre><code>$ s=&#39;one_two_three_four_five&#39;
 $ A=&quot;$(echo $s | cut -d&#39;_&#39; -f2)&quot;
 $ echo $A
-two</code></pre>
-<h2 id="string-substitution">String substitution</h2>  
+two</code></pre>  
     </div>
     <div class="mt3">
       <a href="/">Back to notes</a>
