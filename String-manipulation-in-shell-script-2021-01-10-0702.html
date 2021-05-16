@@ -274,10 +274,10 @@
 </tbody>
 </table>
 <h2 id="extract-substring-with-regular-expression">Extract substring with regular expression</h2>
-<p>Replace all ‘a’ with ‘b’</p>
+<p>Replace all ‘b’ with ‘a’</p>
 <pre><code>$ echo &quot;bpple bpple&quot; | sed &#39;s/b/a/g&#39;
 # output: apple apple</code></pre>
-<p>Replace none-number from a string</p>
+<p>Remove all none-number</p>
 <pre><code>$ echo a1b2c3 | sed &#39;s/[^0-9]*//g&#39;` 
 # output: 123</code></pre>
 <p>Links: - <a href="https://www.gnu.org/software/sed/manual/sed.html">Sed, a stream editor</a></p>
