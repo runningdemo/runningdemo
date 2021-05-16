@@ -1,6 +1,6 @@
 #!/bin/bash
 cd "$(dirname "$BASH_SOURCE")"
-# sh ./build.sh
+sh ./build.sh
 if [ -z $(git status --porcelain) ]; then
   echo 'not changed'
 else
@@ -9,4 +9,4 @@ else
   git commit -m "publish"
 fi
 
-# git push
+git push
