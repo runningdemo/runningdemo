@@ -260,7 +260,11 @@
       <p>Download the video first:</p>
 <pre><code>&gt; youtube-dl https://www.youtube.com/watch?v=xXp1-u0Psio -o &lt;downloaded_file_name&gt;</code></pre>
 <p>Then trim with ffmpeg:</p>
-<pre><code>&gt; ffmpeg -i &lt;downloaded_file_name&gt; --ss &lt;start_time&gt; -t &lt;duration&gt; -c:v copy -c:a copy &lt;trimmed_file_name&gt;</code></pre>
+<pre><code>&gt; ffmpeg -i &lt;downloaded_file_name&gt; -ss &lt;start_time&gt; -t &lt;duration&gt; -c:v copy -c:a copy &lt;trimmed_file_name&gt;</code></pre>
+<ul>
+<li><start_time> in the format of ‘hh:mm:ss’ to specify the time stamp for the start of the trim.</li>
+<li><duration> in the format of ‘hh:mm:ss’ to specify the length of the trim.</li>
+</ul>
 <p>Last, clean it up:</p>
 <pre><code>rm &lt;downloaded_file_name&gt;</code></pre>  
     </div>
