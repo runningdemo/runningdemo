@@ -257,20 +257,23 @@
       <strong>Date:</strong> 2021-01-03
     </div>
     <div class="note-content b1 bg-gray pa2">
-      <h3 id="print-all-the-configuration-related-to-status-bar">Print all the configuration related to status bar</h3>
+      <figure>
+<img src="./assets/tmux-status-bar-settings.png" alt="tmux status bar customization" /><figcaption aria-hidden="true">tmux status bar customization</figcaption>
+</figure>
+<h3 id="print-all-the-configuration-related-to-status-bar">Print all the configuration related to status bar</h3>
 <pre><code>tmux show-options -g | grep status</code></pre>
 <h3 id="my-mininal-status-bar-configuration">My mininal status bar configuration</h3>
 <pre><code># .tmux.config
 
 # Custom status line
-set status-style fg=white,bg=black
-set window-status-format &quot;#I:#W &quot;
-set window-status-current-format &quot;#I:#W &quot;
-set window-status-current-style fg=yellow,bg=black
-set status-left &quot;#S&quot;
-set status-left-style fg=white,bg=black
-set status-right &quot;&quot;
-</code></pre>  
+set -g status-style fg=white,bg=black
+set -g status-justify centre
+set -g window-status-format &quot;#I:#W &quot;
+set -g window-status-current-format &quot;#I:#W &quot;
+set -g window-status-current-style fg=yellow,bg=black
+set -g status-left &quot;#S&quot;
+set -g status-left-style fg=white,bg=black
+set -g status-right &quot;&quot;</code></pre>  
     </div>
     <div class="mt3">
       <a href="/">Back to notes</a>
