@@ -257,19 +257,16 @@
       <strong>Date:</strong> 2021-06-12
     </div>
     <div class="note-content b1 bg-gray pa2">
-      <h2 id="list-all-the-worktree">List all the worktree</h2>
-<pre><code>git worktree list</code></pre>
-<ol type="1">
-<li>Clone a bare repo</li>
-</ol>
+      <h2 id="clone-a-bare-repo">Clone a bare repo</h2>
 <pre><code>git clone --bare &lt;repo&gt;</code></pre>
-<ol start="2" type="1">
-<li>Check out a remote branch</li>
-</ol>
-<p>cd to your clone repo folder and checkout a branch, let’s do <code>master</code></p>
+<h2 id="add-the-master-branch-worktree">Add the master branch worktree</h2>
+<p>cd to your clone repo folder and add the first worktree, let’s do <code>master</code></p>
 <pre><code>cd &lt;repo folder&gt;
 git worktree add master</code></pre>
+<h2 id="list-all-the-worktree">List all the worktree</h2>
+<pre><code>git worktree list</code></pre>
 <h2 id="create-a-new-worktree-from-a-remote-branch">Create a new worktree from a remote branch</h2>
+<p>Sometimes there is new branch in the GitHub and want to add it in your local.</p>
 <p>First step: fetch that remote branch from <remote></p>
 <pre><code>git fetch origin feature/feature-name:feature/feature-name</code></pre>
 <p>Then add a worktree with the branch name, here we need -B because it’s already fetch in the first step:</p>
