@@ -275,9 +275,15 @@ git worktree add master</code></pre>
 <pre><code>git worktree add -b feature/improved-schedule-part-4 ../improved-scheduling-part-4</code></pre>
 <p>I found it’s useful to use the <code>-b</code> option, because it won’t create a nested folder structure and cannot put a slash ‘/’ inside a branch name, like this:</p>
 <pre><code>git worktree add ../feature/improved-schedule-part-4</code></pre>
-<h2 id="rebase-onto-the-remote-branch">Rebase onto the remote branch</h2>
-<p>Rebase onto master for example</p>
+<h2 id="rebase-onto-the-latest-master-branch">Rebase onto the latest master branch</h2>
+<p>Rebase onto master for example:</p>
 <pre><code>git pull --rebase origin master</code></pre>
+<h2 id="reset-to-remote-branch">Reset to remote branch</h2>
+<p>When using worktree, when you run command try to log the remote tracking branch using <code>git status -sb</code> it’s always empty (at least for me). So here is the trick I use to reset.</p>
+<p>Step 1, fetch the origin branch first:</p>
+<pre><code>&gt; git fetch origin feature/my-feature-branch</code></pre>
+<p>Step 2, reset to FETCH_HEAD</p>
+<pre><code>&gt; git reset --hard FETCH_HEAD</code></pre>
 <h2 id="other-commands">Other commands:</h2>
 <ul>
 <li>list all worktree: <code>git worktree list</code></li>
