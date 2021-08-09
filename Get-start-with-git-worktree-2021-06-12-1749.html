@@ -279,7 +279,7 @@ git worktree add master</code></pre>
 <p>Rebase onto master for example:</p>
 <pre><code>git pull --rebase origin master</code></pre>
 <h2 id="reset-to-remote-branch">Reset to remote branch</h2>
-<p>When using worktree, when you run command try to log the remote tracking branch using <code>git status -sb</code> it’s always empty (at least for me). So here is the trick I use to reset.</p>
+<p>When using worktree and run command try to log the remote tracking branch using <code>git status -sb</code>, it always show empty tracking branch (at least for me). So here is the trick I use to reset current branch to a remote branch.</p>
 <p>Step 1, fetch the origin branch first:</p>
 <pre><code>&gt; git fetch origin feature/my-feature-branch</code></pre>
 <p>Step 2, reset to FETCH_HEAD</p>
