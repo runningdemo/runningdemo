@@ -2,7 +2,7 @@
 
 # cleanup: remove all .html files
 NOTE_PATH='/home/liang/vimwiki/'
-SITE_PATH='/home/liang/projects/runningdemo.com/'
+SITE_PATH='/home/liang/runningdemo/'
 
 cd $NOTE_PATH
 files=$(rg -l "publish: 1" \

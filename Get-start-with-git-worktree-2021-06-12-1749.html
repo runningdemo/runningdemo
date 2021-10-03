@@ -259,10 +259,13 @@
     <div class="note-content b1 bg-gray pa2">
       <h2 id="clone-a-bare-repo">Clone a bare repo</h2>
 <pre><code>git clone --bare &lt;repo&gt;</code></pre>
+<p>Or create a bare repo by:</p>
+<pre><code>git init --bare my_repo.git</code></pre>
 <h2 id="add-the-master-branch-worktree">Add the master branch worktree</h2>
 <p>cd to your clone repo folder and add the first worktree, let’s do <code>master</code></p>
 <pre><code>cd &lt;repo folder&gt;
 git worktree add master</code></pre>
+<p>The ugly thing about adding a branch is when the cloned repo is an empty repo, and we want to create the first branch in the repo, more check here https://docshield.kofax.com/RPA/en_US/11.0.0_qrvv5i5e1a/help/BestPracticesHelp/rpa_rlm_best_practices/c_initialize_bare.html</p>
 <h2 id="list-all-the-worktree">List all the worktree</h2>
 <pre><code>git worktree list</code></pre>
 <h2 id="create-a-new-worktree-from-a-remote-branch">Create a new worktree from a remote branch</h2>
@@ -291,6 +294,7 @@ git worktree add master</code></pre>
 <li>force remove a branch: <code>git worktree remove foobar --force</code></li>
 <li>delete a branch: <code>git branch -d &lt;branch_name&gt;</code></li>
 <li>force delete a branch: <code>git branch -D &lt;branch_name&gt;</code></li>
+<li>pull from the orign with the same branch name: <code>git pull origin '$(git rev-parse --abbrev-ref HEAD)'</code></li>
 </ul>  
     </div>
     <div class="mt3">
